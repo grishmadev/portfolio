@@ -29,13 +29,15 @@ body {
 
 .body {
   font-family: "JetBrains Mono";
+  text-decoration: none;
+  h2:nth-child(even) {
+    text-align: right;
+  }
+  h2:nth-child(odd) {
+    text-align: left;
+  }
   >div {
-    h2:nth-child(even) {
-      text-align: right;
-    }
-    h2:nth-child(odd) {
-      text-align: left;
-    }
+    position: relative;
     p:nth-child(even) {
       text-align: right;
     }
@@ -43,11 +45,23 @@ body {
       text-align: left;
     }
   }
+  @media (min-width: 900px) {
+    >div:nth-child(even) {
+      padding-left: 200px;
+    }
+    >div:nth-child(odd) {
+      padding-right: 200px;
+    }
+  }
+  h3 {
+    margin: 0;
+  }
 }
 
 .heading {
   position: relative;
   padding: 10px;
+  word-break: break-word;
 }
 
 .responsive {
