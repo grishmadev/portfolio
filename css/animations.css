@@ -1,0 +1,29 @@
+.fadein {
+  animation-name: fadein;
+  animation-duration: 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animation for fade left */
+.fadeleft {
+  animation-name: fadeleft;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeleft {
+  0% {
+    left: -10px;
+  }
+  100% {
+    left: 0;
+  }
+}
