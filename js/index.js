@@ -1,4 +1,36 @@
-let heading = document.getElementsByClassName("heading");
-console.log("content: ", heading[0].innerHTML);
-heading[0].innerHTML = "Hellooo"
 
+const animateCryptic = (text, elem, duration) => {
+  let inter = "";
+  let id = setInterval(() => {
+    if (inter.length === text.length - 1) {
+      clearInterval(id);
+    }
+    inter += text[inter.length];
+    elem.innerHTML = showCryptic(inter, text.length);
+  }, duration);
+}
+
+
+function showCryptic(text, len) {
+  let neededLen = len - text.length;
+  return text + generateRandomWord(neededLen);
+}
+
+function generateRandomWord(len) {
+  let result = "";
+  for (let i = 0; i < len; i++) {
+    let randomAlpha = Math.floor(Math.random() * 26) + 97;
+    let char = String.fromCharCode(randomAlpha);
+    result += char;
+  }
+  return result;
+}
+
+let heading = document.getElementsByClassName("heading");
+
+
+
+setTimeout(() => {
+  document.title = "Hey. lets walk";
+  animateCryptic("Welcome to my Inventory", heading[0], 20);
+}, 1500);
