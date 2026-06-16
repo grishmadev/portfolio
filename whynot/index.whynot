@@ -1,0 +1,44 @@
+[Box]
+## About me
+I am Grishma as you can already tell by the title, whoops- it just changed. I am a Software Engineer focused on low-level systems, network architecture, and high-performance backends. 
+My sole goal is to become great, whether through software or anything else.
+[/Box]
+
+[Box]
+## My Experience
+I used to be a local tutor teaching students younger than me, but not young enough to have them teach letters from scratch.
+
+My *Professional Experience* Starts from
+### *Piston Technologies (Intern) Jan 26 - Mar 26*
+#### *A US based Fin-Tech Startup*
+I interned at Piston as an Onsite Backend Developer.
+
+Me and the team I was assigned to, worked on quarterly sprints and Agile Methodology to deliver results as fast and productive as possible.
+
+By the time I joined, I was assigned to optimize backend and it's pre-existing functions, which later was resolved to refactoring the entire prisma stack to raw SQL. The difference in "Time To Last Bites" was phenomenal, upto ~50% faster which was obvious because of the typescript wrapper.
+
+On top of it, I also helped mitigate critical backend vulnerabilities like SQL Injections & Cross Site Scripting.
+
+I learned many things- technical, non-technical lessons, the unspoken rules etc from the team I was assigned in, which was far more valuable than the certificate I was handed after.
+[/Box]
+
+[Box]
+## My Projects
+Some of them are hobby projects that I was curious about and wanted to build. while others were made to solve a specific problem.
+
+[Thanos - L4 Load Balancer](https://github.com/grishmadev/thanos)
+[/Box]
+
+[Box]
+## My Tech Stack
+I am quite adaptive to new tools and "habitats". However, there are some I am sticking to after trying out other alternatives.
+
+### Software I use
+#### IDE
+I mainly use NVIM with LazyVim plugins after facing memory issues with VSCode for over a year, but if I had to use a GUI based Editor, it would be Zed
+
+#### Testing
+I switched to Bruno for API testing as an alternative to Insomnia which itself was an alternative to Postman.
+
+Then I switched to Linux, specifically Ubuntu, and stayed there for 8 months, after that I jumped to Void Linux.
+[/Box]
