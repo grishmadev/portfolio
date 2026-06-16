@@ -31,13 +31,13 @@ let heading = document.getElementsByClassName("heading");
 
 
 setTimeout(() => {
-  document.title = "Hey. lets walk";
+  document.title = "hey. lets walk.";
   animateCryptic("Welcome to my Inventory", heading[0], 20);
 }, 1500);
 
-document.addEventListener("DOMContentLoaded", async () => {
-  let content = await parseWhyNot("./whynot/index.whynot");
-  document.getElementById("body").innerHTML = content;
-})
+// document.addEventListener("DOMContentLoaded", async () => {
+//   let content = await parseWhyNot("./whynot/index.whynot");
+//   document.getElementById("body").innerHTML = content;
+// })
 
 
