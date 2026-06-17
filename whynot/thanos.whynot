@@ -1,0 +1,33 @@
+[Box]
+## Thanos: The Titan of L4 Load Balancing
+Thanos is not just another load balancer; it is a high-performance, low-latency L4 gateway meticulously engineered in Rust. In the world of high-frequency networking, every microsecond counts. Thanos was born out of a necessity for a tool that could handle massive throughput without the overhead typically associated with higher-level application proxies. By operating at Layer 4 of the OSI model, Thanos makes routing decisions based on IP and TCP/UDP port information, bypassing the expensive deep packet inspection required for Layer 7 balancing. This architectural choice allows it to maintain incredible speeds, making it ideal for high-traffic environments where performance is the absolute priority.
+[/Box]
+
+[Box]
+## Architectural Deep Dive and Performance Optimization
+The core of Thanos's performance lies in its choice of systems-level primitives. Built entirely in Rust, it leverages the language's zero-cost abstractions and memory safety guarantees to ensure stability under heavy load. One of the key optimizations implemented is the integration of the MiMalloc allocator.
+MiMalloc is a general-purpose allocator with excellent performance characteristics, particularly in multi-threaded environments, which helps Thanos minimize heap allocation overhead. Furthermore, Thanos provides developers with granular control over hardware resources through manual CPU pinning. By binding worker threads to specific physical cores, Thanos eliminates the performance penalties of context switching and cache misses, ensuring that the load balancer can saturate the available network bandwidth with predictable consistency.
+[/Box]
+
+[Box]
+## Advanced Proxying and Transparency Modes
+Thanos offers two primary modes of operation to suit different network topologies. In Normal Mode, the load balancer acts as a standard proxy, terminating the incoming connection and initiating a new one to the backend. This provides a layer of anonymity for the backends but obscures the original client's IP address.
+For environments where identity is critical, Thanos implements TProxy (Transparent Proxying). In TProxy mode, Thanos preserves the original client IP address throughout the entire request lifecycle. This is achieved through sophisticated manipulation of the Linux networking stack, allowing backend servers to see and log the actual source of the traffic. This feature is indispensable for security auditing, rate limiting, and geo-location services that rely on accurate client identification.
+[/Box]
+
+[Box]
+## Robust Balancing Strategies and Intelligent Routing
+Distributing load effectively requires more than just simple redirection. Thanos supports multiple balancing strategies to ensure optimal resource utilization. The Round Robin strategy provides a simple yet effective way to distribute traffic equally across all healthy backends, making it suitable for identical server clusters.
+For more dynamic workloads, the Least Connections strategy tracks the number of active sessions on each backend and routes new traffic to the server with the lowest current load. This prevents any single server from becoming a bottleneck, especially when processing requests with varying execution times.
+The health checking system continuously monitors backend availability, automatically removing failing nodes from the pool to maintain seamless service uptime.
+[/Box]
+
+[Box]
+## Configuration, Deployment, and Future Roadmap
+Ease of use is as important as performance. Thanos can be fully configured via a simple yet powerful `.conf` file format or through dynamic command-line arguments. This allows for rapid deployment in containerized environments like Docker or Kubernetes. Looking forward, the roadmap for Thanos includes the implementation of eBPF-based acceleration to further push the boundaries of L4 performance by handling packet filtering directly in the kernel space.
+We are also exploring the addition of more sophisticated health check protocols and a real-time monitoring dashboard to provide deep insights into traffic patterns and backend health. Thanos is an evolving project, constantly being refined to meet the demands of modern, high-scale network infrastructure.
+[/Box]
+
+[Box]
+[View the full source code on GitHub](https://github.com/grishmadev/thanos)
+[/Box]

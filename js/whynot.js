@@ -1,6 +1,7 @@
 export async function parseWhyNot(location) {
   let content = await fetch(location).then(e => e.text());
-  let boxed = parseBox(content);
+  let parad = parsePara(content);
+  let boxed = parseBox(parad);
   let headed = parseHeader(boxed);
   let linked = parseLink(headed);
   let bolded = parseBold(linked);
@@ -74,10 +75,19 @@ function parseLink(content) {
   return arr.join("\n");
 }
 
+function parsePara(content) {
+  let arr = content.split("\n");
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].startsWith("[Box]") ||
+      arr[i].startsWith("[/Box]") ||
+      arr[i].startsWith("#") || arr[i].startsWith("\n") || arr[i] == "") {
+      continue;
+    }
+    arr[i] = "<p>" + arr[i] + "</p>";
+  }
+  return arr.join("\n");
+}
+
 function parseBold(content) {
   return content.replaceAll(/\*(.*?)\*/g, '<b>$1</b>');
 }
-// await parseWhyNot("./whynot/index.whynot");
-// console.log("res: ", parseBold("Kishor is *ded*"));
-
-

@@ -9,8 +9,8 @@ My sole goal is to become great, whether through software or anything else.
 I used to be a local tutor teaching students younger than me, but not young enough to have them teach letters from scratch.
 
 My *Professional Experience* Starts from
-### *Piston Technologies (Intern) Jan 26 - Mar 26*
-#### *A US based Fin-Tech Startup*
+### Piston Technologies (Intern) Jan 26 - Mar 26
+#### A US based Fin-Tech Startup
 I interned at Piston as an Onsite Backend Developer.
 
 Me and the team I was assigned to, worked on quarterly sprints and Agile Methodology to deliver results as fast and productive as possible.
@@ -26,7 +26,10 @@ I learned many things- technical, non-technical lessons, the unspoken rules etc 
 ## My Projects
 Some of them are hobby projects that I was curious about and wanted to build. while others were made to solve a specific problem.
 
-[Thanos - L4 Load Balancer](https://github.com/grishmadev/thanos)
+[Thanos - L4 Load Balancer](./projects/thanos.html)
+[Beacon - A Lightweight Network Manager](./projects/beacon.html)
+[Ilyafy - An Audio Sharing App for Long Distance Couples](./projects/ilyafy.html)
+[SbziMndi - A Marketplace for soon to be expired items](./projects/sbzimndi.html)
 [/Box]
 
 [Box]
@@ -39,6 +42,7 @@ I mainly use NVIM with LazyVim plugins after facing memory issues with VSCode fo
 
 #### Testing
 I switched to Bruno for API testing as an alternative to Insomnia which itself was an alternative to Postman.
-
+#### Operating System
+As every other user, I've always been using Windows- Win10, Win11, but couldn't untill the bloat was too much for my potato laptop.
 Then I switched to Linux, specifically Ubuntu, and stayed there for 8 months, after that I jumped to Void Linux.
 [/Box]
