@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let body = document.getElementById("body");
   if (!body) return;
   body.innerHTML = "";
-  
+
   const whynotPath = isProjectPage ? `../whynot/${projectName}.whynot` : "./whynot/index.whynot";
   let content = await parseWhyNot(whynotPath);
   let arr = content.split(" ");
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     data += arr[curr_idx] + " ";
     body.innerHTML = data;
     curr_idx += 1;
-  }, 0)
+  }, 0.1)
 })
 
 
