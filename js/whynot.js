@@ -1,6 +1,7 @@
 export async function parseWhyNot(location) {
   let content = await fetch(location).then(e => e.text());
-  let parad = parsePara(content);
+  let imged = parseImg(content);
+  let parad = parsePara(imged);
   let boxed = parseBox(parad);
   let headed = parseHeader(boxed);
   let linked = parseLink(headed);
@@ -71,6 +72,22 @@ function parseLink(content) {
     let res = `<a href="${link}">${text}</a>`;
     let line = arr[j].slice(0, start_index) + res + arr[j].slice(end_index + 1, arr[j].length);
     arr[j] = line;
+  }
+  return arr.join("\n");
+}
+
+function parseImg(content) {
+  let arr = content.split("\n");
+  for (let i = 0; i < arr.length; i++) {
+    let text = arr[i].trim();
+    console.log("text: ", text);
+    if (text[0] == "$") {
+      let slice = text.slice(1, text.length).trim();
+      if (slice.startsWith("[") && slice.endsWith("]")) {
+        let imglink = slice.slice(1, slice.length - 1);
+        arr[i] = `<img src="${imglink}" />`;
+      }
+    }
   }
   return arr.join("\n");
 }

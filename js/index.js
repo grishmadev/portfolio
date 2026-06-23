@@ -32,13 +32,23 @@ const isProjectPage = window.location.pathname.includes("/projects/");
 const projectName = window.location.pathname.split("/").pop().replace(".html", "");
 
 setTimeout(() => {
-  document.title = isProjectPage ? `${projectName} - hey. lets walk.` : "hey. lets walk.";
+  document.title = isProjectPage ? `${projectName}` : "hey. lets walk through.";
   const headingText = isProjectPage ? projectName.charAt(0).toUpperCase() + projectName.slice(1) : "Welcome to my Inventory";
   animateCryptic(headingText, heading[0], 20);
 }, 1500);
 
+let footer = `<div class="responsive footer">
+      <div>
+        <a href="https://github.com/grishmadev">Github</a>
+        <a href="https://linkedin.com/in/kishor-dih">LinkedIn</a>
+        <a href="mailto:grishmadev@proton.me">Email</a>
+      </div>
+    </div>
+    <p>last updated: 2026-06-23</p>
+`;
+
 document.addEventListener("DOMContentLoaded", async () => {
-  let body = document.getElementById("body");
+  let body = document.getElementById("content");
   if (!body) return;
   body.innerHTML = "";
 
@@ -57,5 +67,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     curr_idx += 1;
   }, 0.1)
 })
-
+document.getElementById("body").innerHTML += footer;
 
