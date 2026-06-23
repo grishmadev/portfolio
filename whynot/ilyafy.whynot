@@ -1,21 +1,17 @@
 [Box]
 ## Ilyafy: Bridging Distances Through Sound
-Ilyafy is a specialized audio sharing application designed specifically for long-distance couples, providing a private and intimate space to share voice notes, music, and ambient sounds. In a digital world dominated by generic messaging platforms, Ilyafy focuses on the emotional weight of audio, allowing partners to feel closer through the nuances of each other's voices. The application is built to handle high-quality audio streaming and storage, ensuring that every shared moment is preserved with crystal clarity, regardless of the physical distance between the users.
+Ilyafy is a specialized audio sharing application designed specifically for long-distance couples, providing a private and intimate space to share music. In a digital world dominated by generic messaging platforms, Ilyafy focuses on the emotional weight of audio, allowing partners to feel closer through the nuances of each other's voices. The application is built to handle high-quality audio streaming and storage, ensuring that every shared moment is preserved with crystal clarity, regardless of the physical distance between the users.
 [/Box]
 
 [Box]
 ## Technical Architecture and Audio Processing
-The backbone of Ilyafy is a robust backend designed to manage large audio files efficiently while maintaining low latency for playback. The system utilizes advanced audio compression algorithms to balance file size with sound quality, making it accessible even on slower mobile networks. On the frontend, the application features a custom-built audio player with support for waveform visualization, allowing users to see the rhythm of the shared audio as they listen. The synchronization engine ensures that both partners have a unified view of their shared library, with real-time notifications for new uploads and shared listening sessions.
+The backbone of Ilyafy is a robust backend designed to manage large audio files efficiently while maintaining low latency for playback. The app uses a custom "Adaptive Bitrate Streaming" making it accessible even on slower mobile networks.
+On the frontend, the synchronization engine ensures that both partners have a unified view of their shared library, with real-time notifications for new uploads and shared listening sessions.
 [/Box]
 
 [Box]
 ## Security, Privacy, and End-to-End Encryption
-Privacy is the cornerstone of Ilyafy. Given the intimate nature of the content shared, the application implements rigorous security measures to protect user data. All audio files are encrypted both in transit and at rest, ensuring that only the intended recipient can access and play the recordings. The authentication system is designed to be seamless yet secure, utilizing modern identity providers and multi-factor authentication where necessary. Users have full control over their data, with options for automatic deletion after a certain period or manual purging of shared history, providing peace of mind in a shared digital environment.
-[/Box]
-
-[Box]
-## User Experience and Emotional Connection
-Beyond the technical implementation, Ilyafy is focused on creating a warm and inviting user experience. The interface is designed to be minimal and distraction-free, putting the focus squarely on the shared audio. Features like "Ambient Sharing" allow users to capture and send the background sounds of their day, creating a sense of "co-presence" even when they aren't actively speaking. The application also includes a "Memory Lane" feature that resurfaces past shared audio clips on significant dates, helping couples celebrate their history and the growth of their relationship over time.
+Privacy is the cornerstone of Ilyafy. Given the intimate nature of the content shared, the application implements rigorous security measures to protect user data. The authentication system is designed to be seamless yet secure via JSON Web Tokens. Users have full control over their data, with options for manual purging of shared history, providing peace of mind in a shared digital environment.
 [/Box]
 
 [Box]

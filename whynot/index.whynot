@@ -37,16 +37,23 @@ Some of them are hobby projects that I was curious about and wanted to build. wh
 
 [Box]
 $[./assets/joji.png]
+
 ## My Tech Stack
-I am quite adaptive to new tools and "habitats". However, there are some I am sticking to after trying out other alternatives.
+I am quite adaptive to new tools and "habitats". However, there are some I am sticking to after trying out other alternatives such as...
 
-### Software I use
-#### IDE
-I mainly use NVIM with LazyVim plugins after facing memory issues with VSCode for over a year, but if I had to use a GUI based Editor, it would be Zed
+### General Stuff
+nvim, Bruno, Void Linux, Bun, pnpm, REST APIs, WebSockets, P2P
 
-#### Testing
-I switched to Bruno for API testing as an alternative to Insomnia which itself was an alternative to Postman.
-#### Operating System
-As every other user, I've always been using Windows- Win10, Win11, but couldn't untill the bloat was too much for my potato laptop.
-Then I switched to Linux, specifically Ubuntu, and stayed there for 8 months, after that I jumped to Void Linux.
+### Development
+#### Languages
+Rust, JavaScript/TypeScript
+
+#### Frontend/Full Stack
+React, React Native, Next.js, Vite, Ratatui
+
+#### Backend
+Node.js, Elysia.js, Express.js, Redis, Prisma, socket2
+
+#### Database
+PostgreSQL, MongoDB
 [/Box]

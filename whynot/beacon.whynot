@@ -1,16 +1,20 @@
 [Box]
 ## Beacon: Reimagining Linux WiFi Management
-Beacon is a lightweight, modern WiFi manager written in Rust, designed as a focused and efficient alternative to the often-bloated NetworkManager found in many Linux distributions. For users of minimal desktop environments or tiling window managers, existing solutions often carry heavy dependencies and unnecessary background processes. Beacon flips this script by providing a streamlined, daemon-based architecture that prioritizes system resources without sacrificing the core functionality required for reliable wireless connectivity. It is built for the user who values a clean system and wants their networking stack to be as fast and unobtrusive as the rest of their environment.
+Beacon is a lightweight, modern WiFi manager written in Rust, designed as a focused and efficient alternative to the often-bloated NetworkManager found in many Linux distributions. For users of minimal desktop environments or tiling window managers, existing solutions often carry heavy dependencies and unnecessary background processes.
+Beacon flips this script by providing a streamlined, daemon-based architecture that prioritizes system resources without sacrificing the core functionality required for reliable wireless connectivity. It is built for the user who values a clean system and wants their networking stack to be as fast and unobtrusive as the rest of their environment.
 [/Box]
 
 [Box]
 ## The Daemon-Client Architecture: Stability by Design
-The primary architectural strength of Beacon is its strict separation of concerns through a daemon-client model. The core networking logic resides within beacond, a background daemon that runs with the necessary privileges to manage network interfaces. This daemon maintains the persistent state of your wireless connections, handles authentication, and performs background tasks. The beacon client, on the other hand, is a lightweight TUI (Terminal User Interface) that serves as the user's window into the system. This separation means that even if you close your terminal or if the client application crashes, your WiFi connection remains perfectly stable. The daemon continues to run in the background, ensuring that your networking state is never compromised by the lifecycle of the user interface.
+The primary architectural strength of Beacon is its strict separation of concerns through a daemon-client model. The core networking logic resides within beacond, a background daemon that runs with the necessary privileges to manage network interfaces. This daemon maintains the persistent state of your wireless connections, handles authentication, and performs background tasks.
+The beacon client, on the other hand, is a lightweight TUI (Terminal User Interface) that serves as the user's window into the system. This separation means that even if you close your terminal or if the client application crashes, your WiFi connection remains perfectly stable.
+The daemon continues to run in the background, ensuring that your networking state is never compromised by the lifecycle of the user interface.
 [/Box]
 
 [Box]
 ## Intelligent Automation and Background Operations
-Beacon isn't just about manual control; it's about smart automation. The daemon features a sophisticated background scanning engine that periodically searches for available access points without interrupting your current connection. This allows the system to build a real-time map of the wireless environment. When it comes to connectivity, Beacon supports automatic roaming and reconnection. It securely stores known network profiles and can automatically transition to the strongest available signal or reconnect to a preferred network after a system wake-up or signal loss. By handling these tasks silently in the background, Beacon provides a "set it and forget it" experience that rivals much heavier networking suites.
+The daemon features a sophisticated background scanning engine that periodically searches for available access points without interrupting your current connection. This allows the system to build a real-time map of the wireless environment.
+When it comes to connectivity, Beacon supports automatic roaming and reconnection while connecting traditionally using the DORA Handshake. It securely stores known network profiles and can automatically transition to the strongest available signal or reconnect to a preferred network after a system wake-up or signal loss. By handling these tasks silently in the background, Beacon provides a "set it and forget it" experience that rivals much heavier networking suites.
 [/Box]
 
 [Box]
@@ -20,7 +24,7 @@ In modern hardware setups, it's not uncommon to have multiple networking interfa
 
 [Box]
 ## Philosophy of Simplicity and the Road Ahead
-The philosophy behind Beacon is that a networking tool should be invisible until you need it. It avoids the complex D-Bus structures and massive dependency chains of traditional managers, opting instead for a clean, Unix-style approach. The roadmap for Beacon includes expanding its TUI capabilities with more detailed signal strength metrics and historical connection logs. We are also working on a minimal C API to allow other developers to build their own frontends or integrations on top of the beacond engine. As Linux users continue to seek out more efficient and customizable workflows, Beacon aims to be the gold standard for minimal, high-performance wireless management on the platform.
+The philosophy behind Beacon is that a networking tool should be invisible until you need it. It avoids the complex D-Bus structures and massive dependency chains of traditional managers, opting instead for a clean, Unix-style approach. The roadmap for Beacon includes expanding its TUI capabilities with more detailed signal strength metrics and historical connection logs.
 [/Box]
 
 [Box]
