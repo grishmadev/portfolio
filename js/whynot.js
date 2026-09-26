@@ -80,7 +80,6 @@ function parseImg(content) {
   let arr = content.split("\n");
   for (let i = 0; i < arr.length; i++) {
     let text = arr[i].trim();
-    console.log("text: ", text);
     if (text[0] == "$") {
       let slice = text.slice(1, text.length).trim();
       if (slice.startsWith("[") && slice.endsWith("]")) {

@@ -1,13 +1,11 @@
 [Box]
 ## About me
 I am Grishma as you can already tell by the title, whoops- it just changed. I am a Software Engineer focused on low-level systems, network architecture, and high-performance backends. 
-My sole goal is to become great, whether through software or anything else.
 [/Box]
 
 [Box]
 $[./assets/polar_bear2.webp]
 ## My Experience
-I used to be a local tutor teaching students younger than me, but not young enough to have them teach letters from scratch.
 
 My *Professional Experience* Starts from
 ### Piston Technologies (Intern) Jan 26 - Mar 26
@@ -20,7 +18,7 @@ By the time I joined, I was assigned to optimize backend and it's pre-existing f
 
 On top of it, I also helped mitigate critical backend vulnerabilities like SQL Injections & Cross Site Scripting.
 
-I learned many things- technical, non-technical lessons, the unspoken rules etc from the team I was assigned in, which was far more valuable than the certificate I was handed after.
+I learned many things- technical, non-technical lessons, the unspoken rules etc from the team I was assigned to, which was far more valuable than the certificate I was handed after.
 [/Box]
 
 [Box]
@@ -28,10 +26,10 @@ $[./assets/aya2.jpg]
 ## My Projects
 Some of them are hobby projects that I was curious about and wanted to build. while others were made to solve a specific problem.
 
-[Thanos - L4 Load Balancer](./projects/thanos.html)
-[Beacon - A Lightweight Network Manager](./projects/beacon.html)
-[Ilyafy - An Audio Sharing App for Long Distance Couples](./projects/ilyafy.html)
-[SbziMndi - A Marketplace for soon to be expired items](./projects/sbzimndi.html)
+[Conan - A Tor-based Chat App](https://github.com/grishmadev/conan)
+[Thanos - L4 Load Balancer](https://github.com/grishmadev/thanos)
+[Beacon - A Lightweight Network Manager](https://github.com/grishmadev/beacon)
+[Ilyafy - An Audio Sharing App for Long Distance Couples](https://github.com/grishmadev/ilyafy)
 [/Box]
 
 
@@ -39,21 +37,22 @@ Some of them are hobby projects that I was curious about and wanted to build. wh
 $[./assets/joji.png]
 
 ## My Tech Stack
-I am quite adaptive to new tools and "habitats". However, there are some I am sticking to after trying out other alternatives such as...
 
 ### General Stuff
-nvim, Bruno, Void Linux, Bun, pnpm, REST APIs, WebSockets, P2P
+nvim, Bruno, Void Linux, Bun
 
-### Development
 #### Languages
 Rust, JavaScript/TypeScript
 
 #### Frontend/Full Stack
-React, React Native, Next.js, Vite, Ratatui
+Astro, React, React Native, Next.js, Vite, Ratatui
 
 #### Backend
-Node.js, Elysia.js, Express.js, Redis, Prisma, socket2
+Node.js, Elysia, Hono, Express.js, Redis, Prisma, socket2
 
 #### Database
-PostgreSQL, MongoDB
+PostgreSQL, MongoDB, SQLite
+
+### Miscellaneous
+Cloudflare (Workers, Queues, D1, R2, Turnstile), Google Scripts
 [/Box]
