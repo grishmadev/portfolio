@@ -41,11 +41,10 @@ setTimeout(() => {
 let footer = `<div class="responsive footer">
       <div>
         <a href="https://github.com/grishmadev">Github</a>
-        <a href="https://linkedin.com/in/kishor-dih">LinkedIn</a>
         <a href="mailto:grishmadev@proton.me">Email</a>
       </div>
     </div>
-    <p>last updated: 2026-06-23</p>
+    <p>last updated: 2026-09-27</p>
 `;
 
 document.addEventListener("DOMContentLoaded", async () => {
