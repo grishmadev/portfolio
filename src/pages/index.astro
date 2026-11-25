@@ -1,0 +1,100 @@
+---
+import "@fontsource/league-gothic"
+import "@styles/globals.css"
+import "@fontsource/jetbrains-mono"
+import "@fontsource/antonio"
+import "@fontsource/shippori-mincho"
+import {GET as Hello} from "@api/hello";
+import type { APIRoute } from "astro";
+const context = {
+  request: new Request('http://localhost'),
+  params: {}
+} as Parameters<APIRoute>[0];
+const helloResponse = await Hello(context);
+const { startedAt } = await helloResponse.json() as { startedAt: number };
+const githubUsername = `grishmadev`;
+const avatarUrl = `https://github.com/${githubUsername}.png`;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+    <link rel="icon" type="image/png" href={avatarUrl} />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Grishma | Portfolio</title>
+	</head>
+	<body class="p-4">
+    <div class="py-1 w-full bg-(--primary-red)" />
+    <div class="flex w-full justify-between items-center">
+      <div class="flex w-fit gap-3 items-center">
+        <h1 class="text-4xl">[ 01 // GRISHMA'S PORTFOLIO ]</h1>
+        <div class="flex flex-col justify-between">
+          <div class="flex items-center gap-2">
+            <span id="syncstatus"></span>
+            <div id="circle" class="rounded-full p-1"></div>
+          </div>
+
+          <span id="syncrate"></span>
+        </div>
+      </div>
+      <div class="flex w-fit gap-5 justify-between items-center">
+        <span class="text-4xl">//</span>
+        <p class="flex-col text-right">
+          <span class="hidden md:block" id="local"></span>
+          <span class="hidden md:block" id="utc"></span>
+        </p>
+        <span id="users"></span>
+        <span class="text-4xl">//</span>
+      </div>
+    </div>
+    <div class="py-1 w-full bg-(--primary-red)" />
+    <div class="w-full flex bg-(--primary-blue) p-1 justify-between">
+      <div>
+      </div>
+      <div class="flex gap-1">
+        <span>[</span>
+        <span id="transfer"></span>
+        <span>][</span>
+        <span id="ttfb"></span>
+        <span>][</span>
+        <span id="started">Alive from: {new Date(startedAt).toLocaleString('en-GB', {
+            hour12: false,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            day: '2-digit',
+            year: '2-digit',
+            month: 'short'
+        })}</span>
+        <span>]</span>
+      </div>
+    </div>
+	</body>
+<script>
+  import {
+    setDOMTime,
+    setDOMHeartbeat,
+    setSyncRate,
+    setSyncStatus,
+    getPerformance,
+    setTTFB,
+    setTransferSize,
+    drawCircle
+  } from "@scripts/main";
+  getPerformance();
+  const clientId = crypto.randomUUID();
+  const heartbeatInterval = 5000; // 5 seconds in ms
+  async function sync() {
+    await setDOMHeartbeat(clientId);
+    setDOMTime("local", "utc");
+    const percentage = setSyncRate("syncrate", heartbeatInterval);
+    setSyncStatus("syncstatus", percentage)
+    drawCircle("circle", percentage);
+  }
+  setTTFB("ttfb");
+  setTransferSize("transfer");
+  sync();
+  setInterval(sync, heartbeatInterval);
+</script>
+</html>

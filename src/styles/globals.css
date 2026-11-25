@@ -1,0 +1,11 @@
+@import "tailwindcss";
+:root {
+  --primary-white: #e8d8c9;
+  --primary-red: #ff0000;
+  --primary-blue: #4b607f;
+  --primary-orange: #f3701e;
+}
+
+@theme {
+  --default-font-family: "antonio";
+}
