@@ -1,0 +1,40 @@
+---
+import Block from "@components/block.astro";
+---
+
+<div class="flex flex-col md:flex-row gap-3 p-4">
+  <!-- image -->
+  <div class="max-w-200">
+    <img src="/polar_bear2.webp" class="rounded w-full" />
+  </div>
+
+  <!-- info -->
+  <div class="max-w-200 w-full">
+    <div class="p-3 rounded bg-(--primary-blue) w-full flex items-center align-center gap-3">
+      <img
+        src="https://github.com/grishmadev.png"
+        alt="Grishma avatar"
+        class="h-10 w-10 shrink-0 rounded object-cover"
+      />
+      <h2 class="text-2xl leading-none flex">
+        Grishma's Appraisal <span class="hidden lg:block">{" [評估]"}</span>
+      </h2>
+    </div>
+    <div class="font-[jetbrains_mono] py-3 grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-4">
+      <Block head="Base" info="India" />
+      <Block field="education" head="Education" info="B. Sc Mathematics" />
+      <Block head="Primary Domain" info="Backend Engineering" />
+      <Block head="Interests" info="Systems & Network" />
+    </div>
+  </div>
+</div>
+<script>
+  const uniStart = { month: 8, year: 2026 };
+  const now = new Date();
+  const yearsElapsed =
+    now.getFullYear() - uniStart.year + (now.getMonth() - uniStart.month) / 12;
+  const yearNum = Math.max(1, Math.floor(yearsElapsed) + 1);
+  const el = document.querySelector<HTMLSpanElement>(`[data-info="education"]`);
+  if (el)
+    el.textContent = `B. Sc Mathematics (${yearNum <= 6 ? `Year ${yearNum}` : "Completed."})`;
+</script>

@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 
-const table: [string, string][] = [["BOM", "Bombay"], ["DEL", "Delhi"], ["SIN", "Singapore"], ["LHR", "London"], ["SFO", "San Fransisco"]];
+const table: [string, string][] = [["BOM", "Bombay"], ["DEL", "Delhi"], ["SIN", "Singapore"], ["LHR", "London"], ["SFO", "San Fransisco"], ["MAA", "Chennai"]];
 
 const lookup = new Map<string, string>(table);
 

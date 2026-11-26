@@ -4,6 +4,16 @@
   --primary-red: #ff0000;
   --primary-blue: #4b607f;
   --primary-orange: #f3701e;
+  --primary-black: #121312;
+}
+
+body {
+  background: var(--primary-white);
+  color: var(--primary-black);
+  @media (prefers-color-scheme: dark) {
+    background: var(--primary-black);
+    color: var(--primary-white);
+  }
 }
 
 @theme {

@@ -79,7 +79,6 @@ export function getPerformance(): PerformaceMetrics {
     transferSize: nav.transferSize,
     encodedBodySize: nav.encodedBodySize
   }
-  console.log("Performance: ", timing);
   return timing;
 }
 
@@ -95,6 +94,9 @@ export function setTransferSize(id: string) {
 }
 
 
+/*
+* Used to draw and animate circle
+**/
 export function drawCircle(id: string, perc: number) {
   const circle = document.getElementById(id) as HTMLElement;
   if (perc > 80) circle.style.background = "green";
@@ -107,6 +109,6 @@ export function drawCircle(id: string, perc: number) {
   ], {
     duration: 1500,
     iterations: Infinity,
-    easing: "ease-in-out"
+    easing: "linear"
   });
 }

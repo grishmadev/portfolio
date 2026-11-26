@@ -1,0 +1,27 @@
+---
+import {context} from "@lib/utils";
+import {GET as Hello} from "@api/hello";
+const helloResponse = await Hello(context);
+const { startedAt } = await helloResponse.json() as { startedAt: number };
+---
+<div class="w-full flex bg-(--primary-blue) p-1 justify-between">
+  <div>
+  </div>
+  <div class="flex gap-1">
+    <span>[</span>
+    <span id="transfer"></span>
+    <span>][</span>
+    <span id="ttfb"></span>
+    <span>][</span>
+    <span id="started">Alive from: {new Date(startedAt).toLocaleString('en-GB', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        day: '2-digit',
+        year: '2-digit',
+        month: 'short'
+    })}</span>
+    <span>]</span>
+  </div>
+</div>

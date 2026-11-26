@@ -1,0 +1,7 @@
+---
+const { head, info, field } = Astro.props;
+---
+<div class="rounded p-4 border border-(--primary-blue) flex flex-col w-full shrink">
+    <span class="text-lg font-semibold capitalize font-[league_gothic]">{head}</span>
+    <span class="font-[antonio]" data-info={field}>{info}</span>
+</div>
