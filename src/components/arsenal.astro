@@ -1,0 +1,13 @@
+---
+const {skills} = Astro.props;
+---
+<div class="w-full p-2 rounded border border-(--primary-blue) flex flex-col min-w-0">
+    <span class="text-lg p-2">Arsenal</span>
+    <div class="flex gap-2 text-xs font-[jetbrains_mono] overflow-x-auto pb-1">
+        {skills.map((skill : string) =>
+          <div class="px-3 flex justify-center
+          align-center rounded-full
+          bg-(--primary-blue) shrink-0 whitespace-nowrap">{skill}</div>
+        )}
+    </div>
+</div>

@@ -112,3 +112,23 @@ export function drawCircle(id: string, perc: number) {
     easing: "linear"
   });
 }
+
+type RepoCount = { name: string, repos: number };
+export function getLangHeirarchy(response: { language: string }[]): RepoCount[] {
+  const result: RepoCount[] = [];
+  const map = new Map<string, number>();
+  for (const r of response) {
+    if (!r.language) continue;
+    const count = map.get(r.language);
+    if (count) map.set(r.language, count + 1);
+    else map.set(r.language, 1);
+  }
+  for (const [name, count] of map.entries()) {
+    result.push({
+      name,
+      repos: count
+    });
+  }
+  result.sort((a, b) => a.repos - b.repos);
+  return result;
+}
