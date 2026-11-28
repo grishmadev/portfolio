@@ -1,30 +1,15 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    ".astro/types.d.ts",
-    "**/*",
-    "./worker-configuration.d.ts"
-  ],
-  "exclude": [
-    "dist"
-  ],
+  "include": [".astro/types.d.ts", "**/*", "./worker-configuration.d.ts"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "paths": {
-      "@styles/*": [
-        "./src/styles/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@api/*": [
-        "./src/pages/api/*"
-      ],
-      "@lib/*": [
-        "./src/lib/*"
-      ],
-      "@scripts/*": [
-        "./src/scripts/*"
-      ]
+      "@styles/*": ["./src/styles/*"],
+      "@components/*": ["./src/components/*"],
+      "@api/*": ["./src/pages/api/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@scripts/*": ["./src/scripts/*"],
+      "@layouts/*": ["./src/layouts/*"]
     }
   }
 }

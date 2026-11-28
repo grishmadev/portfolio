@@ -12,6 +12,7 @@ export const GET: APIRoute = async ({ request }) => {
   ).cf;
   const map = await getColoMap();
   return Response.json({
+    // cf,
     startedAt: started,
     colo: cf?.colo,
     edgeLocation: cf?.colo ? map.get(cf?.colo)?.city : undefined,
@@ -23,7 +24,8 @@ export const GET: APIRoute = async ({ request }) => {
     timezone: cf?.timezone,
     latitude: cf?.latitude,
     longitude: cf?.longitude,
-    // asn: cf?.asn,
+    asn: cf?.asn,
+    asOrganization: cf?.asOrganization,
     tlsVersion: cf?.tlsVersion,
     httpProtocol: cf?.httpProtocol,
     clientTcpRtt: cf?.clientTcpRtt,

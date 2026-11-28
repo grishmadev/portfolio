@@ -202,3 +202,8 @@ export function setLocation(id: string, location: string) {
   const elem = document.getElementById(id) as HTMLElement;
   elem.innerHTML = location;
 }
+
+export function setOrg(id: string, org: string) {
+  const elem = document.getElementById(id) as HTMLElement;
+  elem.innerHTML = org;
+}

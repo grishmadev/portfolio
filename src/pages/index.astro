@@ -9,6 +9,7 @@ import Head from '@components/head1.astro';
 import Head2 from '@components/head2.astro';
 import Body from '@components/body1.astro';
 import Map from '@components/map.astro';
+import Projects from '@components/projects.astro';
 import { getViewerLocations } from '@lib/utils';
 const locations = JSON.stringify(await getViewerLocations(100)).replace(
   /</g,
@@ -31,6 +32,7 @@ const avatarUrl = `https://github.com/${githubUsername}.png`;
     <Head2 />
     <Body />
     <Map />
+    <Projects />
   </body>
   <script
     id="viewers-data"
@@ -57,6 +59,7 @@ const avatarUrl = `https://github.com/${githubUsername}.png`;
       setTLSVersion,
       setHTTPProtocol,
       setLocation,
+      setOrg,
     } from '@scripts/main';
     import { getVisitorId } from '@scripts/utils';
     import { placeCurrentDot, placeViewers, placeArrow } from '@scripts/map';
@@ -107,6 +110,7 @@ const avatarUrl = `https://github.com/${githubUsername}.png`;
     setHTTPProtocol('http-protocol', serverInfo.httpProtocol);
     setLocation('region', serverInfo.region);
     setLocation('city', serverInfo.city);
+    setOrg('organization', serverInfo.asOrganization);
     const raw = document.getElementById('viewers-data')?.textContent;
     const locations = raw ? JSON.parse(raw) : [];
     // setting the map

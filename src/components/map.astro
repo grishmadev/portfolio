@@ -8,7 +8,12 @@ import Block from './block.astro';
     class="border border-(--primary-blue) rounded p-1 bg-(--primary-blue) relative"
     id="data-map-box"
   >
-    <img src="/world.svg" class="w-full min-w-120" id="data-map-img" />
+    <img
+      src="/world.svg"
+      class="w-full min-w-100"
+      alt="World Map"
+      id="data-map-img"
+    />
     <div
       id="data-map-dot"
       class="hidden absolute w-2 h-2 rounded-full bg-red-500 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-50"
@@ -28,6 +33,7 @@ import Block from './block.astro';
       <Block head="HTTP Protocol" info="Loading.." field="http-protocol" />
       <Block head="Region" info="Loading.." field="region" />
       <Block head="City" info="Loading.." field="city" />
+      <Block head="Provider" info="Loading.." field="organization" />
     </div>
   </div>
 </div>
