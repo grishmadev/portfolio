@@ -1,53 +1,132 @@
 ---
-import "@fontsource/league-gothic"
-import "@styles/globals.css"
-import "@fontsource/jetbrains-mono"
-import "@fontsource/antonio"
-import "@fontsource/shippori-mincho"
-import Head from "@components/head1.astro";
-import Head2 from "@components/head2.astro";
-import Body from "@components/body1.astro";
+import '@fontsource/league-gothic';
+import '@styles/globals.css';
+import '@styles/style.css';
+import '@fontsource/jetbrains-mono';
+import '@fontsource/antonio';
+import '@fontsource/shippori-mincho';
+import Head from '@components/head1.astro';
+import Head2 from '@components/head2.astro';
+import Body from '@components/body1.astro';
+import Map from '@components/map.astro';
+import { getViewerLocations } from '@lib/utils';
+const locations = JSON.stringify(await getViewerLocations(100)).replace(
+  /</g,
+  '\\u003c',
+);
 const githubUsername = `grishmadev`;
 const avatarUrl = `https://github.com/${githubUsername}.png`;
 ---
 
 <html lang="en">
-<head>
-   	<meta charset="utf-8" />
-<link rel="icon" type="image/png" href={avatarUrl} />
-   	<meta name="viewport" content="width=device-width" />
-   	<meta name="generator" content={Astro.generator} />
-   	<title>Grishma | Portfolio | 里什瑪</title>
-</head>
-<body class="p-4">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href={avatarUrl} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Grishma | Portfolio | 里什瑪</title>
+  </head>
+  <body class="p-4 flex flex-col gap-3 max-w-500">
     <Head />
     <Head2 />
     <Body />
-</body>
-<script>
-  import {
-    setDOMTime,
-    setDOMHeartbeat,
-    setSyncRate,
-    setSyncStatus,
-    getPerformance,
-    setTTFB,
-    setTransferSize,
-    drawCircle
-  } from "@scripts/main";
-  getPerformance();
-  const clientId = crypto.randomUUID();
-  const heartbeatInterval = 5000; // 5 seconds in ms
-  async function sync() {
-    await setDOMHeartbeat(clientId);
-    setDOMTime("local", "utc");
-    const percentage = setSyncRate("syncrate", heartbeatInterval);
-    setSyncStatus("syncstatus", percentage)
-    drawCircle("circle", percentage);
-  }
-  setTTFB("ttfb");
-  setTransferSize("transfer");
-  sync();
-  setInterval(sync, heartbeatInterval);
-</script>
+    <Map />
+  </body>
+  <script
+    id="viewers-data"
+    type="application/json"
+    set:html={locations}
+  ></script>
+  <script>
+    import {
+      setDOMTime,
+      setDOMHeartbeat,
+      setSyncRate,
+      setSyncStatus,
+      getPerformance,
+      setTTFB,
+      setTransferSize,
+      drawCircle,
+      setAliveFrom,
+      setRtt,
+      setHelloLen,
+      setQuic,
+      setDeliveryRate,
+      setTLSCipher,
+      setEdgeLocation,
+      setTLSVersion,
+      setHTTPProtocol,
+      setLocation,
+    } from '@scripts/main';
+    import { getVisitorId } from '@scripts/utils';
+    import { placeCurrentDot, placeViewers, placeArrow } from '@scripts/map';
+    getPerformance();
+    const heartbeatInterval = 5000; // 5 seconds in ms
+    async function sync() {
+      await setDOMHeartbeat();
+      setDOMTime('local', 'utc');
+      const percentage = setSyncRate('syncrate', heartbeatInterval);
+      setSyncStatus('syncstatus', percentage);
+      drawCircle('circle', percentage);
+    }
+    setTTFB('ttfb');
+    setTransferSize('transfer');
+    sync();
+    setInterval(sync, heartbeatInterval);
+    // posting location for telemetry
+    fetch('api/server-info', {
+      method: 'POST',
+      headers: {
+        'X-Visitor-Key': getVisitorId(),
+      },
+    });
+    // setting the head component
+    const [
+      serverInfoResponse,
+      // coloResponse
+    ] = await Promise.all([
+      fetch('/api/server-info'),
+      // fetch('/api/colo'),
+    ]);
+    const [
+      serverInfo,
+      // colo
+    ] = (await Promise.all([
+      serverInfoResponse.json(),
+      // coloResponse.json(),
+    ])) as any[];
+    setAliveFrom('started', serverInfo.startedAt);
+    setRtt('rtt', serverInfo.clientTcpRtt);
+    setQuic('quic', serverInfo.clientQuicRtt);
+    setHelloLen('hello-len', serverInfo.tlsClientHelloLength);
+    setDeliveryRate('delivery-rate', serverInfo.deliveryRate);
+    // setting client info
+    setTLSCipher('cipher', serverInfo.tlsCipher);
+    setEdgeLocation('edge-location', serverInfo.edgeLocation);
+    setTLSVersion('tls-version', serverInfo.tlsVersion);
+    setHTTPProtocol('http-protocol', serverInfo.httpProtocol);
+    setLocation('region', serverInfo.region);
+    setLocation('city', serverInfo.city);
+    const raw = document.getElementById('viewers-data')?.textContent;
+    const locations = raw ? JSON.parse(raw) : [];
+    // setting the map
+    const placeCD = () => {
+      placeViewers(locations as { lon: number; lat: number }[]);
+      placeCurrentDot(
+        serverInfo.longitude,
+        serverInfo.latitude,
+        'data-map-dot',
+      );
+      placeCurrentDot(
+        serverInfo.edgeLon,
+        serverInfo.edgeLat,
+        'data-map-server',
+      );
+      placeArrow(locations);
+    };
+    window.addEventListener('load', placeCD);
+    window.addEventListener('resize', placeCD);
+    document.addEventListener('astro:page-load', placeCD);
+    placeCD();
+  </script>
 </html>

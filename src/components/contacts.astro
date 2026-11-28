@@ -1,0 +1,26 @@
+---
+import { siGithub, siProtonmail } from 'simple-icons';
+import ContactIcon from '@components/contact-icon.astro';
+---
+
+<div class="flex items-stretch gap-2">
+  <a
+    href="/resume.pdf"
+    download="Grishma_Resume.pdf"
+    id="download-resume"
+    class="styled-button bg-(--primary-blue) rounded p-4 w-full cursor-pointer text-center"
+    title="Download Resumé"
+  >
+    Download Resumé
+  </a>
+  <ContactIcon
+    href="https://github.com/grishmadev"
+    title="GitHub"
+    icon={siGithub}
+  />
+  <ContactIcon
+    href="mailto:grishmadev@proton.me"
+    title="Proton Mail"
+    icon={siProtonmail}
+  />
+</div>

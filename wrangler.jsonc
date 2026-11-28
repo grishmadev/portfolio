@@ -1,16 +1,23 @@
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "compatibility_date": "2026-11-17",
-  "compatibility_flags": [
-    "global_fetch_strictly_public"
-  ],
-  "name": "portfolio",
-  "main": "@astrojs/cloudflare/entrypoints/server",
-  "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS"
-  },
-  "observability": {
-    "enabled": true
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"compatibility_date": "2026-11-17",
+	"compatibility_flags": [
+		"global_fetch_strictly_public"
+	],
+	"name": "portfolio",
+	"main": "@astrojs/cloudflare/entrypoints/server",
+	"assets": {
+		"directory": "./dist",
+		"binding": "ASSETS"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "portfolio_db",
+			"database_name": "portfolio-db",
+			"database_id": "032179cf-db4b-420d-b38b-bbc6a0f668f2"
+		}
+	]
 }

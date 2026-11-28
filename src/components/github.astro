@@ -1,42 +1,58 @@
 ---
-import Block from "@components/block.astro";
+import Block from '@components/block.astro';
+import Heading from '@components/heading1.astro';
 ---
-    <div class="p-3 rounded bg-(--primary-blue) w-full flex items-center align-center gap-3 text-2xl">
-        <span>GitHub Activity</span>
-        <span id="github-username">[ @grishmadev ]</span>
-    </div>
-    <span id="about" class="font-[jetbrains_mono]"></span>
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-2">
-        <Block field="github-followers" head="Followers" info="Loading.."/>
-        <Block field="github-public-repos" head="Public Repos" info="Loading.."/>
-        <Block field="github-stars" head="Total Stars" info="Loading.." />
-    </div>
+
+<Heading>
+  <span>GitHub Activity</span>
+  <span id="github-username">[ @grishmadev ]</span>
+</Heading>
+<span id="about" class="font-[jetbrains_mono]"></span>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-2">
+  <Block field="github-followers" head="Followers" info="Loading.." />
+  <Block field="github-public-repos" head="Public Repos" info="Loading.." />
+  <Block field="github-stars" head="Total Stars" info="Loading.." />
+</div>
 <script>
+  import { getLangHeirarchy } from '@scripts/main';
 
-import { getLangHeirarchy } from "@scripts/main";
-
-const ghUserApi = `https://api.github.com/users/grishmadev`;
-const ghRepoApi = `${ghUserApi}/repos`;
-// const [userResponse, repoResponse] = await Promise.all([fetch(ghUserApi), fetch(ghRepoApi)]);
-const userResponse = await fetch(ghUserApi);
-const repoResponse = await fetch(ghRepoApi);
-const { followers, bio, public_repos } = await userResponse.json() as { followers: number, bio: string, public_repos: number };
-const repoList = await repoResponse.json() as {name: string, stargazers_count: number, language: string }[];
-const followersEl = document.getElementById("github-followers") as HTMLSpanElement;
-followersEl.textContent = followers.toString();
-const aboutEl = document.getElementById("about") as HTMLSpanElement;
-aboutEl.textContent = bio;
-const publicRepoEl = document.getElementById("github-public-repos") as HTMLSpanElement;
-const repoCount =  getLangHeirarchy(repoList);
-publicRepoEl.textContent = public_repos.toString() + " ";
-let registeredRepos = 0;
-for (let i = 0; i < 2; i++) {
-  const repo = repoCount.pop();
-  if (!repo) break;
-  registeredRepos += repo.repos;
-  publicRepoEl.textContent += `(${repo.repos} ${repo.name}) `;
-}
-publicRepoEl.textContent += `(${public_repos - registeredRepos} Others)`;
-const starsEl = document.getElementById("github-stars") as HTMLSpanElement;
-starsEl.textContent = repoList.reduce((acc, repo) => acc + repo.stargazers_count, 0).toString();
+  const ghUserApi = `https://api.github.com/users/grishmadev`;
+  const ghRepoApi = `${ghUserApi}/repos`;
+  const [userResponse, repoResponse] = await Promise.all([
+    fetch(ghUserApi),
+    fetch(ghRepoApi),
+  ]);
+  const { followers, bio, public_repos } = (await userResponse.json()) as {
+    followers: number;
+    bio: string;
+    public_repos: number;
+  };
+  const repoList = (await repoResponse.json()) as {
+    name: string;
+    stargazers_count: number;
+    language: string;
+  }[];
+  const followersEl = document.getElementById(
+    'github-followers',
+  ) as HTMLSpanElement;
+  followersEl.textContent = followers.toString();
+  const aboutEl = document.getElementById('about') as HTMLSpanElement;
+  aboutEl.textContent = bio;
+  const publicRepoEl = document.getElementById(
+    'github-public-repos',
+  ) as HTMLSpanElement;
+  const repoCount = getLangHeirarchy(repoList);
+  publicRepoEl.textContent = public_repos.toString() + ' ';
+  let registeredRepos = 0;
+  for (let i = 0; i < 2; i++) {
+    const repo = repoCount.pop();
+    if (!repo) break;
+    registeredRepos += repo.repos;
+    publicRepoEl.textContent += `(${repo.repos} ${repo.name}) `;
+  }
+  publicRepoEl.textContent += `(${public_repos - registeredRepos} Others)`;
+  const starsEl = document.getElementById('github-stars') as HTMLSpanElement;
+  starsEl.textContent = repoList
+    .reduce((acc, repo) => acc + repo.stargazers_count, 0)
+    .toString();
 </script>

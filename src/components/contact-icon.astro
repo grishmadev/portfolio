@@ -1,0 +1,23 @@
+---
+import { type SimpleIcon } from 'simple-icons';
+const { icon, label, href } = Astro.props as {
+  icon: SimpleIcon;
+  label: string;
+  href: string;
+};
+---
+
+<a
+  href={href}
+  aria-label={label}
+  class="styled-button bg-(--primary-blue) rounded aspect-square shrink-0 flex items-center justify-center px-4 cursor-pointer"
+>
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    aria-label={icon.title}
+    class="h-5 w-5 fill-current text-(--primary-white)"
+  >
+    <path d={icon.path} />
+  </svg>
+</a>

@@ -1,10 +1,14 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 :root {
   --primary-white: #e8d8c9;
   --primary-red: #ff0000;
-  --primary-blue: #4b607f;
-  --primary-orange: #f3701e;
+  --primary-blue: #1f2939;
+  --primary-orange: #ff6200;
   --primary-black: #121312;
+  --primary-violet: #552d55;
+  @media (prefers-color-scheme: light) {
+    --primary-blue: #b4cffa;
+  }
 }
 
 body {
@@ -17,5 +21,5 @@ body {
 }
 
 @theme {
-  --default-font-family: "antonio";
+  --default-font-family: 'antonio';
 }

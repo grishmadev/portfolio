@@ -1,0 +1,40 @@
+---
+import Heading from '@components/heading1.astro';
+import Block from './block.astro';
+---
+
+<div class="flex flex-row-reverse flex-wrap w-full justify-center gap-2 max-w-500">
+  <div
+    class="border border-(--primary-blue) rounded p-1 bg-(--primary-blue) relative"
+    id="data-map-box"
+  >
+    <img src="/world.svg" class="w-full min-w-120" id="data-map-img" />
+    <div
+      id="data-map-dot"
+      class="hidden absolute w-2 h-2 rounded-full bg-red-500 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-50"
+    />
+    <div
+      id="data-map-server"
+      class="hidden absolute w-2 h-2 rounded-full bg-[#7008e7] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-50"
+    />
+    <div id="map-legend" class="absolute bottom-2 left-2"></div>
+  </div>
+  <div class="flex flex-col flex-1 min-w-120 gap-2">
+    <Heading>Signal Telemetry [ 訊號遙測 ]</Heading>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%, 200px),1fr))] md:grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-2">
+      <Block head="CIPHER" info="Loading.." field="cipher" />
+      <Block head="Edge Location" info="Loading.." field="edge-location" />
+      <Block head="TLS Version" info="Loading.." field="tls-version" />
+      <Block head="HTTP Protocol" info="Loading.." field="http-protocol" />
+      <Block head="Region" info="Loading.." field="region" />
+      <Block head="City" info="Loading.." field="city" />
+    </div>
+  </div>
+</div>
+<script>
+  import { animateCircle } from '@scripts/main';
+  import { setMapLegend } from '@scripts/map';
+  animateCircle('data-map-dot', 7);
+  animateCircle('data-map-server', 7);
+  setMapLegend('map-legend');
+</script>

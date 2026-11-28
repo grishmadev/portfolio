@@ -1,11 +1,22 @@
 ---
-import Block from "@components/block.astro";
-import Arsenal from "@components/arsenal.astro"
-import GitHub from "@components/github.astro"
-const skills = ["Typescript", "NodeJS", "GitHub", "Rust", "C++", "Python", "Docker"];
+import Block from '@components/block.astro';
+import Arsenal from '@components/arsenal.astro';
+import GitHub from '@components/github.astro';
+import Contact from '@components/contacts.astro';
+import Heading from '@components/heading1.astro';
+
+const skills = [
+  'Typescript',
+  'NodeJS',
+  'GitHub',
+  'Rust',
+  'C++',
+  'Python',
+  'Docker',
+];
 ---
 
-<div class="flex flex-wrap gap-3 p-4 justify-center">
+<div class="flex flex-wrap gap-3 justify-center max-w-500">
   <!-- image -->
   <div class="max-w-220 w-full flex-1 min-w-120">
     <img src="/polar_bear2.webp" class="rounded w-full object-cover h-full" />
@@ -13,17 +24,15 @@ const skills = ["Typescript", "NodeJS", "GitHub", "Rust", "C++", "Python", "Dock
 
   <!-- info -->
   <div class="max-w-220 min-w-120 w-full gap-2 flex flex-col flex-1">
-    <div class="p-3 rounded bg-(--primary-blue) w-full flex items-center align-center gap-3 text-2xl">
+    <Heading>
       <img
         src="https://github.com/grishmadev.png"
         alt="Grishma avatar"
         class="h-10 w-10 shrink-0 rounded object-cover"
       />
-      <span class="leading-none">
-        Grishma's Appraisal //
-      </span>
+      <span class="leading-none">Grishma's Appraisal </span>
       <span class="hidden lg:inline">[ 評估 ]</span>
-    </div>
+    </Heading>
     <div class="font-[jetbrains_mono] grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-2">
       <Block head="Base" info="India" />
       <Block field="education" head="Education" info="B. Sc. Mathematics" />
@@ -32,6 +41,7 @@ const skills = ["Typescript", "NodeJS", "GitHub", "Rust", "C++", "Python", "Dock
     </div>
     <Arsenal skills={skills} />
     <GitHub />
+    <Contact />
   </div>
 </div>
 <script>
@@ -42,5 +52,5 @@ const skills = ["Typescript", "NodeJS", "GitHub", "Rust", "C++", "Python", "Dock
   const yearNum = Math.max(1, Math.floor(yearsElapsed) + 1);
   const el = document.querySelector<HTMLSpanElement>(`#education`);
   if (el)
-    el.textContent = `B. Sc. Mathematics (${yearNum <= 6 ? `Year ${yearNum}` : "Completed."})`;
+    el.textContent = `B. Sc. Mathematics (${yearNum <= 6 ? `Year ${yearNum}` : 'Completed.'})`;
 </script>
